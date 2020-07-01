@@ -1,7 +1,7 @@
-require "active_record"
-require "cursor-paginate/errors"
+require 'active_record'
+require 'cursor-paginate-r4/errors'
 
-module CursorPagination
+module CursorPaginationR4
   module ActiveRecord
     module RelationMethods
       attr_accessor :cursor_key
@@ -16,7 +16,7 @@ module CursorPagination
               end
 
         rel.cursor_key = rel.model.columns.map(&:name).find { |column| options.key? column }
-        raise CursorPagination::InvalidColumnGiven unless rel.cursor_key
+        raise CursorPaginationR4::InvalidColumnGiven unless rel.cursor_key
 
         cursor = options[rel.cursor_key]
 
@@ -33,7 +33,7 @@ module CursorPagination
               end
 
         rel.cursor_key = rel.model.columns.map(&:name).find { |column| options.key? column }
-        raise CursorPagination::InvalidColumnGiven unless rel.cursor_key
+        raise CursorPaginationR4::InvalidColumnGiven unless rel.cursor_key
 
         cursor = options[rel.cursor_key]
 
@@ -63,7 +63,7 @@ module CursorPagination
 
       def set_next
         rel = self
-        raise CursorPagination::LimitNotSet if rel.limit_value.nil?
+        raise CursorPaginationR4::LimitNotSet if rel.limit_value.nil?
 
         excess = rel.dup.tap { |r| r.limit_value = r.limit_value + 1 }
 

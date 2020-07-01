@@ -22,7 +22,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "cursor_pagination.gemspec" }}
+            - v1-dependencies-{{ checksum "cursor_pagination_r4.gemspec" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
@@ -35,7 +35,7 @@ jobs:
       - save_cache:
           paths:
             - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "cursor_pagination.gemspec" }}
+          key: v1-dependencies-{{ checksum "cursor_pagination_r4.gemspec" }}
 
       # Database setup
       - run: cd spec/dummy && bundle exec rake db:schema:load && cd ../../

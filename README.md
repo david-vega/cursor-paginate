@@ -1,4 +1,5 @@
-# cursor-paginate [![Gem Version](https://badge.fury.io/rb/cursor-paginate.svg)](https://badge.fury.io/rb/cursor-paginate) [![CircleCI](https://circleci.com/gh/otoyo/cursor-paginate.svg?style=svg)](https://circleci.com/gh/otoyo/cursor-paginate)
+_Forked from [cursor-paginate](https://github.com/otoyo/cursor-paginate), Added Rails 4 support_
+
 Cursor based pagination library for Rails.
 
 ## Usage
@@ -43,7 +44,7 @@ If you use [Bootstrap 4.x](https://getbootstrap.com/docs/4.3/components/paginati
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'cursor-paginate'
+gem 'cursor-paginate-r4'
 ```
 
 ## Contributing
