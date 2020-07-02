@@ -5,7 +5,7 @@ Cursor based pagination library for Rails.
 ## Usage
 
 ```ruby
-# Get the newest 100 posts where id <= cursor
+# Get the newest 100 posts where id < cursor
 # If cursor is nil, get the newest 100 posts.
 @posts = Post.before(id: params[:cursor]).limit(100)
 
