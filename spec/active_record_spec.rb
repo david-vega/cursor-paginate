@@ -70,7 +70,7 @@ describe 'RelationMethods' do
 
       context 'limit is less than count of all' do
         let(:limit) { 3 }
-        let(:expected) { Post.order('id desc')[limit + cursor_pos].id }
+        let(:expected) { Post.order('id desc')[limit + cursor_pos + 1].id }
 
         it_behaves_like 'next_cursor exists'
       end
@@ -111,7 +111,17 @@ describe 'RelationMethods' do
         let(:limit) { 3 }
         let(:expected) { Post.where(is_published: false).order('id desc')[limit + cursor_pos].id }
 
-        it_behaves_like 'next_cursor exists'
+        describe '#has_next?' do
+          subject { posts.has_next? }
+
+          it { is_expected.to eq false }
+        end
+
+        describe 'next_cursor' do
+          subject { posts.next_cursor }
+
+          it { is_expected.to be_nil }
+        end
       end
 
       context 'limit is equal to count of all' do
@@ -128,7 +138,7 @@ describe 'RelationMethods' do
 
       context 'limit is less than count of all' do
         let(:limit) { 3 }
-        let(:expected) { Post.order('id desc')[limit + cursor_pos].created_at }
+        let(:expected) { Post.order('id desc')[limit + cursor_pos + 1].created_at }
 
         it_behaves_like 'next_cursor exists'
       end
