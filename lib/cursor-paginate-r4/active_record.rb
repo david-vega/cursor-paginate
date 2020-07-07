@@ -20,7 +20,7 @@ module CursorPaginationR4
 
         cursor = options[rel.cursor_key]
 
-        rel.where(cursor ? arel_table[rel.cursor_key].lt(cursor) : nil).reorder(arel_table[rel.cursor_key].desc)
+        rel.where(cursor ? arel_table[rel.cursor_key].lteq(cursor) : nil).reorder(arel_table[rel.cursor_key].desc)
       end
 
       def after(options)
@@ -37,7 +37,7 @@ module CursorPaginationR4
 
         cursor = options[rel.cursor_key]
 
-        rel.where(cursor ? arel_table[rel.cursor_key].gteq(cursor) : nil).reorder(arel_table[rel.cursor_key].asc)
+        rel.where(cursor ? arel_table[rel.cursor_key].gt(cursor) : nil).reorder(arel_table[rel.cursor_key].asc)
       end
 
       def has_next?
