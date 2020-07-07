@@ -1,15 +1,16 @@
 _Forked from [cursor-paginate](https://github.com/otoyo/cursor-paginate), Added Rails 4 support_
 
+# cursor-paginate [![Gem Version](https://badge.fury.io/rb/cursor-paginate-r4.svg)](https://badge.fury.io/rb/cursor-paginate) [![CircleCI](https://circleci.com/gh/david-vega/cursor-paginate.svg?style=svg)](https://circleci.com/gh/david-vega/cursor-paginate)
 Cursor based pagination library for Rails.
 
 ## Usage
 
 ```ruby
-# Get the newest 100 posts where id < cursor
+# Get the newest 100 posts where id <= cursor
 # If cursor is nil, get the newest 100 posts.
 @posts = Post.before(id: params[:cursor]).limit(100)
 
-# Get the oldest 100 posts where id >= cursor
+# Get the oldest 100 posts where id > cursor
 # If cursor is nil, get the oldest 100 posts.
 @posts = Post.after(id: params[:cursor]).limit(100)
 
